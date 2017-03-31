@@ -8,7 +8,6 @@ cache:
 branches:
   only:
     - source
-
 env:
   global:
     - GH_NAME="thayumanavarhsv2017"
@@ -16,7 +15,12 @@ env:
     
     - secure: "iioW3VNfVFoF9LF7w5xU9keDFsLmWd7XKLOmkECiY5i9S+iWSdM09i2pUHkVbzhCMmhXsyUM9dpO2fMdf0aQPNnYzj+/o4cM0gT/cMVRIQIS5ARzVtQ7F9UQKQP8P5NaCT3z9AtjPR6mSOZ54Ja75hhqMSkjS58M08mrVTqkNlwGMoLTgxYVtjuRKxhmSbkNyvUfFDK3jv1zAiVEYSiZD5nU+godiBH542zWKyBzxI1SWAAnqDEFJZj01HpLOBnqZ1ZFkWiAnEdkueWlZZ+BHf7mXE05m+n/810QU1XWfQDd7WR11ZiplwubecPI5Bb1q3UnHFUA032wFTU/lutO2Nfb1mSNw/2ioy42EbEakFm89hhkdKyyvn769RuJpDzqWKRdlEB9q4nRY4F7bgeYEN4/reyey6IfG9+CrLmP4xpRDbd4lK8cNdMvrZTEYTR1GntHnHmvJarEbKlKOdjKoQD2Xgx1lBacKO1C5CWyIUVCzv12RLYR0FkLXNVu9TwGxtEMC5V1XZ3IGjCOQKJKBoHzYS76XHHwxdPsqxIWMqXhCMtg+4+2e2CBRsh6jE/odGO2/P5m3sW9gk/xPx+H78z4MA8KlcwMUsmnXu5JNCGF+WEN4Ik6hENP7GoPoOv2QwtMX0rHMr3hqaXiH64oiiAkdeyb0L29gz+1CR6392Q=" # email
 
+   
 
+env: BUILD=stack ARGS="--resolver lts-2"
+  compiler: ": #stack 7.8.4"
+  addons: {apt: {packages: [ghc-7.8.4], sources: [hvr-ghc]}}
+  
 before_install:
   - mkdir -p ~/.local/bin
   - export PATH=~/.local/bin:$PATH
