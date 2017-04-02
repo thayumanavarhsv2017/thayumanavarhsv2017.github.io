@@ -20,7 +20,8 @@ before_install:
   - export PATH=~/.local/bin:$PATH
   - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz | gunzip > ~/.local/bin/stack
   - chmod a+x ~/.local/bin/stack
-  - export PATH=~/opt/ghc/7.10.3/bin:$PATH
+  - stack config set system-ghc --global true
+  - export PATH=~/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
   - git submodule foreach --recursive 'git checkout master; git ls-files | grep -v README | grep -v CNAME | xargs -r git rm'
 
 addons:
@@ -28,7 +29,7 @@ addons:
     sources:
       - hvr-ghc
     packages:
-      - ghc-7.10.3
+      - ghc-7.10.2
 
 install:
   - stack setup --no-terminal --skip-ghc-check
@@ -40,7 +41,7 @@ before_script:
 
 script:
   - stack build --no-terminal
-  - cd weblog
+  - cd vtweb
   - stack ghc site.hs
   - ./site build
 
