@@ -43,12 +43,14 @@ script:
   - stack ghc site.hs
   - ./site build
 
-after_success:
+after_script:
+  - cd _site
   - export REMOTE=$(git config remote.origin.url | sed 's/.*:\/\///')
-  - git remote add github https://${GH_TOKEN}@${REMOTE}
-  - cd site
-  - git -c core.excludesfile='NONE' add --all -- ./
-  - git add .
+  - git init
+  - git config --global user.email "$GH_EMAIL"
+  - git config --global user.name "$GH_NAME"
+  - git remote add github https://${GH_USER}:${GH_TOKEN}@${REMOTE}
+  - git add --all
   - git ls-files
   - git status
   - git commit -m "Built by Travis (build $TRAVIS_BUILD_NUMBER)"
