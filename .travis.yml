@@ -1,60 +1,51 @@
 language: generic
-
 sudo: false
 cache:
   directories:
-    - $HOME/.stack/
-
+  - "$HOME/.stack/"
 branches:
   only:
-    - source
+  - source
 env:
   global:
-    - GH_NAME="thayumanavarhsv2017"
-    - secure: "Om/pDERT2xTACc8H+ruK+VB4KpiUIdLosfJKHhLtyqmM7kJQFiU7ZCe/xhwLko3RajHVXdatgtMJCnlj952mv6vBjt7TZaAPlkfDLvXx/suscB0es5TEqcJtpW5/9Fxy+u18EK/hODhC+qOeAukUccR3Ywtcn+FdbtHUCNWqZ6GQk73IPmJNXAMNgsLpi8mcZBO9+q+nGqq6hHHRqgIAuCgbqOXbOMvXh+Zp4dUJRnb1ikxeu00IGOyL9UY/YKiFvY8KqiQBkwkSV2jL9FvUu3116Bz4BEaWNBRTAW/dSSsR4bb4OOQlEDBPv1niGYpi4fDIQzdBQfICo0O8YMHooIwMzRSSylw/ADDXiD4YfLp0GTri3rgVL0kHPkXhdnduv/YQMJZDncvgrlnjJO7LVhBhb9ucpRG6t/QaVK67UZr+YxuCcUINjWyI1INAX7GrX1DtGOkcw0iO+iP7595XuaZTuip2fqySy1gSmTIYMJu18fY9h6iDUpf/ze+NUpjhcbjWyvtKugCvgi6kuQxJzr38CE3Hpy0VvMS7OWUQZkKLvYT9xZdTdEC6OQtljIOYrfs2iN9m7z0cPfIAtmOWGXWs2w8MjwRFjjonP2WXAKtrvAHekxn4KhjVxoYC4op8XuuuMVhba8KsIvvgAogTlbXZVA/EGLl7UfxqNCFgyRc="
-    
-#    - secure: "iioW3VNfVFoF9LF7w5xU9keDFsLmWd7XKLOmkECiY5i9S+iWSdM09i2pUHkVbzhCMmhXsyUM9dpO2fMdf0aQPNnYzj+/o4cM0gT/cMVRIQIS5ARzVtQ7F9UQKQP8#P5NaCT3z9AtjPR6mSOZ54Ja75hhqMSkjS58M08mrVTqkNlwGMoLTgxYVtjuRKxhmSbkNyvUfFDK3jv1zAiVEYSiZD5nU+godiBH542zWKyBzxI1SWAAnqDEFJZj01HpLOBnqZ1ZFkWi#AnEdkueWlZZ+BHf7mXE05m+n/810QU1XWfQDd7WR11ZiplwubecPI5Bb1q3UnHFUA032wFTU/lutO2Nfb1mSNw/2ioy42EbEakFm89hhkdKyyvn769RuJpDzqWKRdlEB9q4nRY4F7bg#eYEN4/reyey6IfG9+CrLmP4xpRDbd4lK8cNdMvrZTEYTR1GntHnHmvJarEbKlKOdjKoQD2Xgx1lBacKO1C5CWyIUVCzv12RLYR0FkLXNVu9TwGxtEMC5V1XZ3IGjCOQKJKBoHzYS76X#HHwxdPsqxIWMqXhCMtg+4+2e2CBRsh6jE/odGO2/P5m3sW9gk/xPx+H78z4MA8KlcwMUsmnXu5JNCGF+WEN4Ik6hENP7GoPoOv2QwtMX0rHMr3hqaXiH64oiiAkdeyb0L29gz+1CR63#92Q="  email
-
+  - GH_NAME="thayumanavarhsv2017"
+  - secure: CLiUiADescY8U5s6VZ/32nup7twBUVGmX/gLWwqFiZkjh21QdZkc3Pe9Otq0Ig0eljxlOJI/ivDl4rywyuA3Ykm0IlMGG9nvAhKbIcqt7ZujVQ2yaPy19QscKEp5AdscQ6mrT6Ew986KADOwz+53br5soi65hn9RniRIJ1wstlrn2enHlu/5b5Zk47cKKayRwTH9wvwyps/NUmvpKjtHnjH1iFkwdBU/REXg8mvSfhuQxnAM+R7AjtPUCPrOXi3An4J3r0mHk0JeG5I1IbYEyNHKuKFK2E8r4kPCzRDK/aYs13sOA7xWyS0pfEhZ4n6MjRwwOPdSJimlMReI+JPy/Dx0WwnbcfpEarw74J02DMR/jVSPwxt0jeCe8C6+txfvoipkY5PGLodMvyBHaq8XIHyii6dC7XrbfeHLuRJhvHV08Jw5ltUmhqZYXdSjgO71W3uBy0RyaBxnYsqeaVwd1YrQE0hgnUZj4D8ezJQ+n1hVpHK7beoVA4L0lD+KGu66ALN22Ly+tGHH3cZW9GCslcXtV8EzBJ5WuaAs/Ecya5SDRUZSDJtKlL1WTKwJHcjlnPyqKnY2JBgMk2IbBd+gYWbabeA4hAGCizyS59d17L8qzykQIHfWNC524mnSTRh7WUvJaoOa/CP929UlONRrll4suI3l0R1Wu1cX5Qxnb6U=
 before_install:
-  - mkdir -p ~/.local/bin
-  - export PATH=~/.local/bin:$PATH
-  - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz | gunzip > ~/.local/bin/stack
-  - chmod a+x ~/.local/bin/stack
-  - export PATH=~/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
-  - git submodule foreach --recursive 'git checkout master; git ls-files | grep -v README | grep -v CNAME | xargs -r git rm'
-
+- mkdir -p ~/.local/bin
+- export PATH=~/.local/bin:$PATH
+- travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz
+  | gunzip > ~/.local/bin/stack
+- chmod a+x ~/.local/bin/stack
+- export PATH=~/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
+- git submodule foreach --recursive 'git checkout master; git ls-files | grep -v README
+  | grep -v CNAME | xargs -r git rm'
 addons:
   apt:
     sources:
-      - hvr-ghc
+    - hvr-ghc
     packages:
-      - ghc-7.10.2
-
+    - ghc-7.10.2
 install:
-  - stack setup --no-terminal --skip-ghc-check
-  - stack build --only-snapshot --no-terminal
-
+- stack setup --no-terminal --skip-ghc-check
+- stack build --only-snapshot --no-terminal
 before_script:
-  - git config --global user.name "thayumanavarhsv201"
-  - git config --global user.email "valambals@gmail.com"
-
+- git config --global user.name "thayumanavarhsv201"
+- git config --global user.email "valambals@gmail.com"
 script:
-  - stack build --no-terminal
-  - stack ghc site.hs
-  - ./site build
-
+- stack build --no-terminal
+- stack ghc site.hs
+- "./site build"
 after_script:
-  - cd _site
-  - export REMOTE=$(git config remote.origin.url | sed 's/.*:\/\///')
-  - git init
-  - git config --global user.email "valambals@gmail.com"
-  - git config --global user.name "thayumanavarhsv2107"
-  - git remote add github https://${GH_TOKEN}@${REMOTE}
-  - git add --all
-  - git ls-files
-  - git status
-  - git commit -m "Built by Travis (build $TRAVIS_BUILD_NUMBER)"
-  - git push --quiet github master:master
-
+- cd _site
+- export REMOTE=$(git config remote.origin.url | sed 's/.*:\/\///')
+- git init
+- git config --global user.email "valambals@gmail.com"
+- git config --global user.name "thayumanavarhsv2107"
+- git remote add github https://${GH_TOKEN}@${REMOTE}
+- git add --all
+- git ls-files
+- git status
+- git commit -m "Built by Travis (build $TRAVIS_BUILD_NUMBER)"
+- git push --quiet github master:master
 notifications:
   email: false
