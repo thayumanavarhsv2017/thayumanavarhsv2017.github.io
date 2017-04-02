@@ -40,7 +40,6 @@ before_script:
 
 script:
   - stack build --no-terminal
-  - cd vtweb
   - stack ghc site.hs
   - ./site build
 
