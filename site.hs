@@ -2,14 +2,45 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Hakyll.Web.Sass (sassCompilerWith)
+import           Text.Sass.Options
+import qualified Bindings.Libsass as Lib
 
 
+saasOptions = SassOptions
+      { sassPrecision         = 5
+      , sassOutputStyle       = Lib.SassStyleNested
+      , sassSourceComments    = False
+      , sassSourceMapEmbed    = False
+      , sassSourceMapContents = False
+      , sassOmitSourceMapUrl  = False
+      , sassIsIndentedSyntax  = False
+      , sassIndent            = "  "
+      , sassLinefeed          = "\n"
+      , sassInputPath         = Nothing
+      , sassOutputPath        = Nothing
+      , sassPluginPaths       = Nothing
+      , sassIncludePaths      = Just ["./scss/foundation-components/", "./scss/"]
+      , sassSourceMapFile     = Nothing
+      , sassSourceMapRoot     = Nothing
+      , sassFunctions         = Nothing
+      , sassHeaders           = Nothing
+      , sassImporters         = Nothing
+      }
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
+
+    match "fonts/*" $ do
+       route idRoute
+       compile copyFileCompiler
+ 
+    match "scss/style.scss" $ do
+      route $ constRoute "css/style.css"
+      compile $ sassCompilerWith saasOptions
 
     match "css/*" $ do
         route   idRoute
@@ -42,6 +73,9 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    create ["run.html"] $ do
+      route idRoute
+      compile copyFileCompiler
 
     match "index.html" $ do
         route idRoute
