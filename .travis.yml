@@ -16,7 +16,7 @@ before_install:
 - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.2.0/stack-0.1.2.0-x86_64-linux.gz
   | gunzip > ~/.local/bin/stack
 - chmod a+x ~/.local/bin/stack
-- export PATH=~/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
+- export PATH=~/.stack/programs/x86_64-linux/ghc-8.0.2/bin:$PATH
 - git submodule foreach --recursive 'git checkout master; git ls-files | grep -v README
   | grep -v CNAME | xargs -r git rm'
 addons:
