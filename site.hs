@@ -37,7 +37,11 @@ main = hakyll $ do
     match "fonts/*" $ do
        route idRoute
        compile copyFileCompiler
- 
+
+    match "js/*" $ do
+       route idRoute
+       compile copyFileCompiler
+
     match "scss/style.scss" $ do
       route $ constRoute "css/style.css"
       compile $ sassCompilerWith saasOptions
@@ -46,11 +50,10 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+    match "traces/*" $ do
+        route   idRoute
+        compile compressCssCompiler
+
 
     match "posts/*" $ do
         route $ setExtension "html"
@@ -75,7 +78,47 @@ main = hakyll $ do
 
     create ["run.html"] $ do
       route idRoute
-      compile copyFileCompiler
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/run.html" defaultContext
+                >>= relativizeUrls
+
+    create ["proc.html"] $ do
+      route idRoute
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/proc.html" defaultContext
+                >>= relativizeUrls
+
+    create ["resume.html"] $ do
+      route idRoute
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/resume.html" defaultContext
+                >>= relativizeUrls
+
+    create ["search.html"] $ do
+      route idRoute
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/search.html" defaultContext
+                >>= relativizeUrls
+
+    create ["read.html"] $ do
+      route idRoute
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/read.html" defaultContext
+                >>= relativizeUrls
+
+
+    create ["contact.html"] $ do
+      route idRoute
+      compile $ do
+          makeItem ""
+                >>= loadAndApplyTemplate "templates/contact.html" defaultContext
+                >>= relativizeUrls
+
 
     match "index.html" $ do
         route idRoute

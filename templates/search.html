@@ -1,0 +1,13 @@
+$partial("templates/head.html")$
+<body id="top-of-page">
+  $partial("templates/navigation.html")$
+  <div class="row t30"> <div class="medium-8 columns medium-offset-2 end">
+      <article itemscope itemtype="http://schema.org/Article"> <header> <span itemprop="name"> <p class="subheadline"></p>
+
+<h1>Search</h1> </span> </header> <span itemprop="articleSection"> <p><br /> Search this website!. <script language="Javascript" type="text/javascript"> function google_search() { var query = document.getElementById("google-search").value; window.open("http://google.com/search?q=" + query + "%20site:" + "http://thayumanavar77.github.io"); }</script></p> <form style="padding-bottom: 200px;" onsubmit="google_search()"> <input type="text" id="google-search" placeholder="Enter search term and hit enter" /> </form> 
+
+
+    </span> </article> </div><!-- /.medium-8.columns --> </div><!-- /.row -->
+  $partial("templates/footer.html")$
+</body>
+</html>
