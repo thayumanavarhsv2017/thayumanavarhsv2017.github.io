@@ -301,7 +301,7 @@ if (tweenToggle == 0) {
     tweenToggle = 1;
     var newCenter = map.layerPointToLatLng(new L.Point(p.x,p.y));
 
-    map.panTo(newCenter, 13);
+    map.panTo(newCenter, 15);
 } else {
     tweenToggle = 0;
 }
@@ -346,7 +346,7 @@ updateRunning();
     setTimeout(function(){
        updateTimer();
        iterate();
-    },700);
+    },1000);
 
 /*$('#begin').click(function(){
     $('.overlay').fadeOut(250);
