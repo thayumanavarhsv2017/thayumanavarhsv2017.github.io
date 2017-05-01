@@ -105,11 +105,11 @@ areaChartSvg.append("g")
 
 //end area chart
 
-//listeners 
+//listeners
 
 $('.slower').click(function(){
     if(timeFactor > 1){
-        timeFactor -= 1;  
+        timeFactor -= 1;
     };
 
     $('.timeFactor').html(timeFactor);
@@ -158,10 +158,6 @@ d3.json('traces/ride1.geojson', function (data) {
     var pointsArray = [];
     var points = g.selectAll(".point")
     .data(pointsArray);
-
-
-
-
 
 var marker = g.append("circle");
 marker.attr("r", 5)
